@@ -88,9 +88,24 @@ def calculate_fao56_penman_monteith(df, elevation_m=560.0):
     return data
 
 if __name__ == "__main__":
+    import os
+    import sys
+    
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    SRC_DIR = os.path.dirname(os.path.abspath(__file__))
+    if SRC_DIR not in sys.path:
+        sys.path.insert(0, SRC_DIR)
+    if BASE_DIR not in sys.path:
+        sys.path.insert(0, BASE_DIR)
+        
     from data_loader import ReservoirDataLoader
+    
+    data_dir = os.path.join(BASE_DIR, "data")
+    os.makedirs(data_dir, exist_ok=True)
+    
     loader = ReservoirDataLoader()
     raw_df = loader.fetch_openmeteo_archive("2021-01-01", "2024-12-31")
     processed_df = calculate_fao56_penman_monteith(raw_df)
-    processed_df.to_csv("d:/26 TY/EDI_Sem5/data/khadakwasla_evaporation_dataset.csv", index=False)
-    print("Computed FAO-56 Penman Monteith evaporation and saved cleaned dataset to data/khadakwasla_evaporation_dataset.csv!")
+    output_path = os.path.join(data_dir, "khadakwasla_evaporation_dataset.csv")
+    processed_df.to_csv(output_path, index=False)
+    print(f"Computed FAO-56 Penman Monteith evaporation and saved cleaned dataset to {output_path}!")
