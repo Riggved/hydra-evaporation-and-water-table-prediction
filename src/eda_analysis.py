@@ -8,7 +8,11 @@ plt.style.use('seaborn-v0_8-whitegrid')
 plt.rcParams['font.family'] = 'sans-serif'
 plt.rcParams['font.sans-serif'] = ['DejaVu Sans', 'Arial']
 
-def run_eda(csv_path="d:/26 TY/EDI_Sem5/data/khadakwasla_evaporation_dataset.csv", output_dir="d:/26 TY/EDI_Sem5/data/eda_plots"):
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DEFAULT_CSV = os.path.join(BASE_DIR, "data", "khadakwasla_evaporation_dataset.csv")
+DEFAULT_OUTPUT_DIR = os.path.join(BASE_DIR, "data", "eda_plots")
+
+def run_eda(csv_path=DEFAULT_CSV, output_dir=DEFAULT_OUTPUT_DIR):
     os.makedirs(output_dir, exist_ok=True)
     df = pd.read_csv(csv_path)
     df['date'] = pd.to_datetime(df['date'])

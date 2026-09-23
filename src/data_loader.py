@@ -174,8 +174,11 @@ class ReservoirDataLoader:
         return df
 
 if __name__ == "__main__":
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    data_dir = os.path.join(BASE_DIR, "data")
+    os.makedirs(data_dir, exist_ok=True)
     loader = ReservoirDataLoader()
     df = loader.fetch_openmeteo_archive("2021-01-01", "2024-12-31")
-    os.makedirs("d:/26 TY/EDI_Sem5/data", exist_ok=True)
-    df.to_csv("d:/26 TY/EDI_Sem5/data/raw_weather_pune.csv", index=False)
-    print("Saved raw weather dataset to data/raw_weather_pune.csv")
+    output_path = os.path.join(data_dir, "raw_weather_pune.csv")
+    df.to_csv(output_path, index=False)
+    print(f"Saved raw weather dataset to {output_path}")

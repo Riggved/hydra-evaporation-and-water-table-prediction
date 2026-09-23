@@ -22,7 +22,11 @@ def nash_sutcliffe_efficiency(y_true, y_pred):
     den = np.sum((y_true - y_mean) ** 2)
     return 1.0 - (num / den)
 
-def train_and_evaluate_models(csv_path="d:/26 TY/EDI_Sem5/data/khadakwasla_evaporation_dataset.csv", output_dir="d:/26 TY/EDI_Sem5/models"):
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DEFAULT_CSV = os.path.join(BASE_DIR, "data", "khadakwasla_evaporation_dataset.csv")
+DEFAULT_OUTPUT_DIR = os.path.join(BASE_DIR, "models")
+
+def train_and_evaluate_models(csv_path=DEFAULT_CSV, output_dir=DEFAULT_OUTPUT_DIR):
     os.makedirs(output_dir, exist_ok=True)
     df = pd.read_csv(csv_path)
     df['date'] = pd.to_datetime(df['date'])

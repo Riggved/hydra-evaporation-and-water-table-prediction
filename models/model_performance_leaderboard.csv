@@ -1,8 +1,8 @@
 Model,R2 Score,RMSE (mm/day),MAE (mm/day),NSE,MAPE (%)
 FAO-56 Penman Monteith (Physics Baseline),0.9983,0.146,0.1159,0.9983,2.14
 Multi-Layer Perceptron (ANN),0.9959,0.2235,0.1769,0.9959,3.25
-Support Vector Regressor (SVR),0.9957,0.2312,0.1637,0.9957,2.9
+Support Vector Regressor (SVR),0.9957,0.2311,0.1637,0.9957,2.9
 Gradient Boosting Regressor,0.9923,0.3072,0.2088,0.9923,3.27
-Extra Trees Regressor,0.9917,0.3202,0.2066,0.9917,3.05
-Random Forest Regressor,0.9887,0.3734,0.2465,0.9887,3.63
+Extra Trees Regressor,0.9918,0.3174,0.2065,0.9918,3.07
+Random Forest Regressor,0.9884,0.3783,0.2478,0.9884,3.63
 Ridge Regression,0.9873,0.396,0.2957,0.9873,4.85
